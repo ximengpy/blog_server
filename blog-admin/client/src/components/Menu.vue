@@ -36,14 +36,14 @@
       <el-menu-item @click="handleClick" index="/admin/MessageDelete">删除留言</el-menu-item>
     </el-submenu>
 
-    <!-- <el-submenu index="Diary">
+    <el-submenu index="Diary">
       <template slot="title">
         <i class="el-icon-chat-dot-round"></i>
         <span>日记管理</span>
       </template>
       <el-menu-item @click="handleClick" index="/admin/DiaryAdd">发表日记</el-menu-item>
       <el-menu-item @click="handleClick" index="/admin/DiaryManage">管理日记</el-menu-item>
-    </el-submenu> -->
+    </el-submenu>
 
     <el-submenu index="Links">
       <template slot="title">

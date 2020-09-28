@@ -18,12 +18,12 @@ const routes = [
     component : () => import('../views/Admin'),
     beforeEnter: (to, from, next) => {
       ifLogin().then(res=>{
-        if (res.data.code ===0) {
+        if (res.data.code) {
           //code不为0，未登录，跳登陆
-          next();
+          next("/");
         }else{
           //code为0，已登录，进入管理界面
-          next('/');
+          next();
         }
       }).catch(()=>{
         next("/");
@@ -60,7 +60,18 @@ const routes = [
         component : () => import('../views/Admin/Message/MessageDelete'),
         meta : {cnName : "留言删除"}
       },
-
+      {
+        path: "DiaryAdd",
+        name:"DiaryAdd",
+        component : () => import('../views/Admin/Diary/DiaryAdd'),
+        meta : {cnName : "添加日记"}
+      },
+      {
+        path: "DiaryManage",
+        name:"DiaryManage",
+        component : () => import('../views/Admin/Diary/DiaryManage'),
+        meta : {cnName : "日记管理"}
+      },
       {
         path: "LinkAdd",
         name:"LinkAdd",

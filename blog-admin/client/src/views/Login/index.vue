@@ -1,30 +1,28 @@
 <template>
-  <div class="login-box">
-    <el-dialog
+  <el-dialog
       title="登陆后台管理系统"
       :visible="true"
+      width="30%"
       :before-close="beforeClose"
       :close-on-click-modal="false"
-      custom-class='dialog-login'
+  >
+    <el-form
+        ref="form"
+        :model="form"
+        label-width="80px"
+        :rules="rules"
     >
-      <el-form
-          ref="form"
-          :model="form"
-          label-width="80px"
-          :rules="rules"
-      >
-        <el-form-item label="用户名" prop="user">
-          <el-input v-model="form.user"></el-input>
-        </el-form-item>
-        <el-form-item label="密码" prop="pwd" >
-          <el-input v-model="form.pwd" show-password></el-input>
-        </el-form-item>
-      </el-form>
-      <span slot="footer" class="dialog-footer">
-        <el-button type="primary" @click="handleClick" :disabled="submitDisabled">登录</el-button>
-      </span>
-    </el-dialog>
-  </div>
+      <el-form-item label="用户名" prop="user">
+        <el-input v-model="form.user"></el-input>
+      </el-form-item>
+      <el-form-item label="密码" prop="pwd">
+        <el-input v-model="form.pwd" show-password></el-input>
+      </el-form-item>
+    </el-form>
+    <span slot="footer" class="dialog-footer">
+      <el-button type="primary" @click="handleClick" :disabled="submitDisabled">登录</el-button>
+    </span>
+  </el-dialog>
 </template>
 
 <script>
@@ -90,7 +88,6 @@
         this.$refs["form"].validate((valid) => {
           if (valid) {
             //验证都通过
-            console.log(this.form)
             login(this.form)
               .then(res=>{
                 if (res.data.code) {
@@ -103,15 +100,14 @@
                   });
                 }else{
                   //登陆成功
-                  console.log('登录成功')
                   this.submitDisabled = false;
                   this.$router.push("/admin");
                 }
               })
-              .catch((err)=>{
+              .catch(()=>{
               this.submitDisabled = false;
               this.$message({
-                message : err,
+                message : "登陆失败，请稍后再试",
                 type : "error",
                 duration : 2000
               });
@@ -127,17 +123,6 @@
   }
 </script>
 
-<style lang="less">
-.login-box {
-  .dialog-login {
-      width: 36%;
-    }
-}
-@media screen and (max-width: 966px)  {
-    .login-box {
-      .dialog-login {
-        width: 100%;
-      }
-    }
-  }
+<style scoped>
+
 </style>

@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const articleInfoDB = require('./articleInfo')
-const {baseUrl} = require("../utils/baseURL")
+
 let Schema = mongoose.Schema;
 let articleSchema = new Schema({
   type : {type: String,required: true},
@@ -9,7 +9,7 @@ let articleSchema = new Schema({
   tag : {type: String,required: true},
   updateDate : {type: Date,default: Date.now},
   date : {type: Date, default: Date.now},
-  surface : {type:String,default: baseUrl+ '/img/defaultSurface.jpg'},
+  surface : {type:String,default: 'http://localhost:3000/img/defaultSurface.jpg'},
   pv : {type: Number,default: 0},
   comment : [{type:Schema.Types.ObjectID,ref:"comment"}]
 })

@@ -29,18 +29,16 @@
             type: 'success',
             duration : 2000
           });
-          this.fullscreenLoading = false;
-          // setTimeout(()=>{
-          //   this.fullscreenLoading = false;
-          //   window.location.reload();
-          // },1000)
+          setTimeout(()=>{
+            this.fullscreenLoading = false;
+            window.location.reload();
+          },1000)
         }).catch(()=>{
           this.$message({
             message: "上传失败",
             type: 'error',
             duration : 2000
           });
-          this.fullscreenLoading = false;
         })
       }
     },

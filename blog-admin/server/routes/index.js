@@ -13,6 +13,10 @@ router.use("/user",require('./user/index'));
 
 /*留言接口*/
 router.use("/message",require('./message/index'));
+
+/*日记接口*/
+router.use("/diary",require('./diary/index'));
+
 /*友链接口*/
 router.use("/links",require('./links/index'));
 

@@ -37,19 +37,6 @@ app.use((req,res,next)=>{
 //设置session
 app.use(require("./session/index"));
 
-app.use((req, res, next) =>{
-  if(/^\/(login)/.test(req.url)) {
-    next()
-  }else {
-    // 不是登录的路由
-    if(req.session.login && req.session.login.admin) {
-      next()
-    }else {
-      res.redirect('/')
-    }
-  }
-})
-
 //设置路由
 app.use('/', require('./routes/index'));
 

@@ -15,8 +15,9 @@ router.post('/',(req,res)=>{
         /*有这个用户*/
 
         /*验证密码*/
-        if (data.pwd === crypto.createHash('sha256').update(pwd).digest('hex')) {
+        if (data.pwd === crypto.createHash("sha256").update(pwd).digest("hex")) {
           /*密码对*/
+
           /*验证管理员权限*/
           if (data.admin){
             /*是管理员*/

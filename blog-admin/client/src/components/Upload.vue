@@ -1,7 +1,7 @@
 <template>
   <el-upload
       class="avatar-uploader"
-      :action="baseFile"
+      action="http://localhost:3001/upload/articleSurface"
       :show-file-list="false"
       :on-success="handleAvatarSuccess"
       :before-upload="beforeAvatarUpload"
@@ -12,17 +12,12 @@
 </template>
 
 <script>
-  import {baseFile} from '../utils/baseURL'
   export default {
     name: "Upload",
     data() {
       return {
-        imageUrl: '',
-        baseFile: ''
+        imageUrl: ''
       };
-    },
-    created() {
-      this.baseFile = baseFile
     },
     methods: {
       handleAvatarSuccess(res, file) {

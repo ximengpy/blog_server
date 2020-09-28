@@ -2,7 +2,7 @@
 const express = require("express");
 const multer = require('multer');
 const path = require("path");
-const {baseUrl} = require("../../utils/baseURL")
+
 let storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, path.join(__dirname,'../../public/img/upload/article'));
@@ -29,7 +29,7 @@ router.post("/articleSurface",(req,res)=>{
       res.send({
         code : 0,
         msg : "",
-        surface :  baseUrl+ "/img/upload/article/"+req.file.filename
+        surface :  "http://localhost:3001/img/upload/article/"+req.file.filename
       })
     }
   })

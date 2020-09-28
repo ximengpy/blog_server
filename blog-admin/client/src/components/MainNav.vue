@@ -2,8 +2,7 @@
   <div class="MainNav">
     <el-breadcrumb separator-class="el-icon-arrow-right">
       <el-breadcrumb-item
-          v-for="(item, index) in getRouters"
-          :key="index"
+          v-for="item in getRouters"
           :to="item.path">
         {{item.meta.cnName || item.name}}
       </el-breadcrumb-item>

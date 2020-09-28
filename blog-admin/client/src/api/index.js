@@ -1,7 +1,7 @@
 import axios from 'axios'
-import {baseUrl} from '../utils/baseURL'
+
 //配置默认的参数
-axios.defaults.baseURL = baseUrl;//默认访问地址
+axios.defaults.baseURL = 'http://localhost:3001';//默认访问地址
 axios.defaults.withCredentials = true; //跨域允许携带cookie
 axios.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded"; //设置POST请求格式
 
@@ -65,6 +65,19 @@ export function deleteMessage(_id) {
   return axios.post("/message/delete",{_id});
 }
 
+
+/*发表日记*/
+export function postDiary(txt,img) {
+  return axios.post("/diary/submit",{txt,img});
+}
+/*请求日记*/
+export function getDiary() {
+  return axios.get("/diary");
+}
+/*删除日记*/
+export function deleteDiary(_id) {
+  return axios.post("/diary/delete",{_id});
+}
 
 /*发表友链*/
 export function postLinks(options) {
