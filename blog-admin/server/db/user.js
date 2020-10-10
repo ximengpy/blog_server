@@ -8,7 +8,7 @@ let user = mongoose.model("user",new mongoose.Schema({
   //注册时间
   regDate : {type:Number , default:Date.now},
   //头像
-  photo : {type:String,default:"http://localhost:3000/img/defaultPhoto.jpeg"},
+  // photo : {type:String,default:"http://localhost:3000/img/defaultPhoto.jpeg"},
   //是否权限禁用
   disabled : {type:Boolean,default: false},
   //是否是管理员

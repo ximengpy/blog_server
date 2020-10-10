@@ -1,34 +1,34 @@
 <template>
-  <div>
-    <textarea ref="demo" :value="value" id="demo" style="display: none;"></textarea>
+   <div>
+        <mavon-editor
+            v-model="content"
+            ref="md"
+            @change="change"
+            style="min-height: 600px"
+        />
   </div>
 </template>
 
 <script>
-
+  import { mavonEditor } from 'mavon-editor'
+  import 'mavon-editor/dist/css/index.css'
   export default {
     name: "RichText",
+    components: {
+        mavonEditor,
+    },
     data(){
       return {
-        layedit : null,
-        index : 0
+        content:'', // 输入的markdown
+        html:'',    // 及时转的html
       }
     },
     props:["value"],
-    watch:{
-      value(){
-        this.$refs.demo.value = this.value;
-        layui.use('layedit', ()=>{
-          this.layedit = layui.layedit;
-          this.index = this.layedit.build('demo');
-        });
-      }
-    },
-    mounted() {
-      layui.use('layedit', ()=>{
-        this.layedit = layui.layedit;
-        this.index = this.layedit.build('demo');
-      });
+    methods: {
+      change(value, render){
+            // render 为 markdown 解析后的结果[html]
+            this.html = render;
+        },
     }
   }
 </script>

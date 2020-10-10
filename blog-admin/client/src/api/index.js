@@ -1,7 +1,7 @@
 import axios from 'axios'
-
+import {baseUrl} from '../utils/baseURL'
 //配置默认的参数
-axios.defaults.baseURL = 'http://localhost:3001';//默认访问地址
+axios.defaults.baseURL = baseUrl;//默认访问地址
 axios.defaults.withCredentials = true; //跨域允许携带cookie
 axios.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded"; //设置POST请求格式
 

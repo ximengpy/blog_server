@@ -39,11 +39,7 @@
         </template>
       </el-table-column>
     </el-table>
-    <Pagination
-        :pageSize="5"
-        :total="total"
-        @currentChange="handlePaginationClick"
-    ></Pagination>
+
     <el-dialog
         title="提示"
         :visible.sync="dialogVisible"
@@ -109,12 +105,6 @@
           });
         })
       },
-      handlePaginationClick(index,size){
-        this.PaginationIndex = index;
-        this.PaginationSize = size;
-        this.changeArticleList();
-        this.changeArticleInfoTotal();
-      },
 
       handleSubmit(data){
         updateArticle(this.defaultData._id,data)
@@ -150,8 +140,7 @@
       },
 
       changeArticleList(){
-        let skip = this.PaginationSize*(this.PaginationIndex-1);
-        getArticle(skip,this.PaginationSize)
+        getArticle()
           .then(res=>{
             this.articleList = res.data.data;
           });

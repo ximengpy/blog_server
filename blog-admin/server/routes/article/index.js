@@ -37,9 +37,8 @@ router.post("/add",(req,res)=>{
 
 /*文章获取*/
 router.get("/get",(req,res)=>{
-  let {skip,limit} = req.query;
 
-  articleDB.find({},{},{skip:skip*1,limit:limit*1})
+  articleDB.find({},{},{sort:{date: -1}})
     .then(data=>{
       res.send({
         code : 0,

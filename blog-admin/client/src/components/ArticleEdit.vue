@@ -61,11 +61,7 @@
           content : {
             validator : (rule,value,cb)=>{
               (function(){
-                if (this.layedit.getContent(this.index)) {
-                  cb();
-                }else{
-                  cb(new Error("请输入文章内容！"));
-                }
+                cb()
               }).call(this.$refs.richText);
             },
             required : true
@@ -100,7 +96,7 @@
               tag: this.form.tag,
               surface: this.form.surface,
               content: (function () {
-                return this.layedit.getContent(this.index);
+                return this.html
               }).call(this.$refs.richText)
             });
 
